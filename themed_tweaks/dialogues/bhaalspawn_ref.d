@@ -66,5 +66,10 @@ BEGIN ~X#GORLET~
 		IF ~~ THEN DO ~SetGlobal("X#GorionTalkingLetter","GLOBAL",4) ActionOverride(Player1,SetGlobal("#L_BSRefKnows","LOCALS",1)) ActionOverride(Player2,SetGlobal("#L_BSRefKnows","LOCALS",1)) ActionOverride(Player3,SetGlobal("#L_BSRefKnows","LOCALS",1)) ActionOverride(Player4,SetGlobal("#L_BSRefKnows","LOCALS",1)) ActionOverride(Player5,SetGlobal("#L_BSRefKnows","LOCALS",1)) ActionOverride(Player6,SetGlobal("#L_BSRefKnows","LOCALS",1))~ EXIT
 	END
 
-	%DIALOG_JAH_LETTER%
+	IF ~~ THEN BEGIN READ_ALOUD_JAHEIRA
+		SAY @2004 // ~Hello <CHARNAME>, If you are reading this, it means I have met an untimely death...
+		%DIALOG_JAH_LETTER%
+	END
+
+	
 // End of new X#GORLET dialogue file

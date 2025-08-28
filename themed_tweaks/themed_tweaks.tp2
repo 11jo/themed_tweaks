@@ -25,6 +25,8 @@ ALWAYS
 		// Library functions I use frequently
 		INCLUDE ~%mod_root%/lib/alter_script.tpa~
 		INCLUDE ~%mod_root%/lib/update_bcs.tpa~
+		INCLUDE ~%mod_root%/lib/areas.tpa~
+		INCLUDE ~%mod_root%/lib/items.tpa~
 	END
 
 	// This needs to be run before every component for some reason
@@ -218,11 +220,11 @@ BEGIN @40
 /////////////////////////////////////////////
 BEGIN @20
 	DESIGNATED 20
-	LABEL "#L-TRANSITIONS-BG1_CUT_SCENES"
+	LABEL "#L-TRANSITIONS-FIX_ARRANGEMENTS"
 	REQUIRE_PREDICATE (GAME_IS ~bgee eet~) @5
-	REQUIRE_PREDICATE !(MOD_IS_INSTALLED ~transitions/transitions.tp2~ (ID_OF_LABEL ~transitions/transitions.tp2~ "#L-TRANSITIONS-BG1_CUT_SCENES")) @7
-	INCLUDE ~themed_tweaks/components/cut_scenes.tpa~
-	LAF cut_scenes END
+	REQUIRE_PREDICATE !(MOD_IS_INSTALLED ~transitions/transitions.tp2~ (ID_OF_LABEL ~transitions/transitions.tp2~ "#L-TRANSITIONS-FIX_ARRANGEMENTS")) @7
+	INCLUDE ~themed_tweaks/components/fix_arrangements.tpa~
+	LAF fix_arrangements END
 
 ////////////////////////////////////////
 // MAKE SURE UNIQUE ITEMS STAY UNIQUE //

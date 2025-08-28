@@ -52,12 +52,12 @@ DEFINE_ACTION_FUNCTION cut_scenes BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE EXACT_MATCH ~StartCutSceneEx("bdcut20a",TRUE)~ ~FadeFromColor([20.0],0) EndCutSceneMode()~
 			END
 	END
-/*
+
 	ACTION_IF (GAME_IS ~bg2ee eet~) THEN BEGIN
 		// Let other components know that cut scenes have been removed
 		// May be important for components that track what the PC knows
 		EXTEND_TOP ~AR0602.BCS~ ~%mod_root%/scripts/cut_scenes.baf~
 		EXTEND_TOP ~AR0700.BCS~ ~%mod_root%/scripts/cut_scenes.baf~ // In case they skip Chateau Irenicus
 	END
-*/
+
 END

@@ -14,6 +14,12 @@ DEFINE_ACTION_FUNCTION bg2_imoen_mm BEGIN
 	COPY ~%mod_root%/objects/#LPot01.itm~ ~override~
     	SAY NAME2 @1002 // ~Potion of Revitalization~
     	SAY DESC  @1003
+	LPF ALTER_ITEM_HEADER 
+		INT_VAR 
+			check_headers = 1
+		STR_VAR 
+			icon = ~#LPot01~
+	END
 
 	// Give Imoen her innate ability and a refresh spells potion
 	LAF INSERT_SCRIPT_BLOCK

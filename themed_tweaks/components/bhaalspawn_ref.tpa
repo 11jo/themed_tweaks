@@ -119,8 +119,8 @@ DEFINE_ACTION_FUNCTION bhaalspawn_ref BEGIN
 
 			OUTER_SPRINT REPLY_GOTO_1 ~~~~~ADD_STATE_TRIGGER %JAHEIRA_JOINED% %STATE_JAH_LETTER1% ~Global("#L_BSRefLetter","GLOBAL",1)~ SET_WEIGHT %JAHEIRA_JOINED% %STATE_JAH_LETTER1% #-2 ~~~~~  
 			OUTER_SPRINT REPLY_GOTO_2 ~~~~~ADD_STATE_TRIGGER %JAHEIRA_JOINED% %STATE_JAH_LETTER2% ~Global("#L_BSRefLetter","GLOBAL",2)~ SET_WEIGHT %JAHEIRA_JOINED% %STATE_JAH_LETTER2% #-1 ~~~~~   
-			OUTER_SPRINT DIALOG_JAH_LETTER ~~~~~IF ~~ THEN BEGIN READ_ALOUD_JAHEIRA
-				SAY @2004 // ~Hello <CHARNAME>, If you are reading this, it means I have met an untimely death...	
+			OUTER_SPRINT DIALOG_JAH_LETTER ~~~~~/*IF ~~ THEN BEGIN READ_ALOUD_JAHEIRA
+				SAY @2004 /* ~Hello <CHARNAME>, If you are reading this, it means I have met an untimely death...~ */*/
 				IF ~~ THEN REPLY @2005 /* ~Jaheira, did you not know about this?~ */ DO ~SetGlobal("X#GorionTalkingLetter","GLOBAL",4) ActionOverride(Player1,SetGlobal("#L_BSRefKnows","LOCALS",1)) ActionOverride(Player2,SetGlobal("#L_BSRefKnows","LOCALS",1)) ActionOverride(Player3,SetGlobal("#L_BSRefKnows","LOCALS",1)) ActionOverride(Player4,SetGlobal("#L_BSRefKnows","LOCALS",1)) ActionOverride(Player5,SetGlobal("#L_BSRefKnows","LOCALS",1)) ActionOverride(Player6,SetGlobal("#L_BSRefKnows","LOCALS",1)) SetGlobal("X#JaFriendTalk","GLOBAL",6) SetGlobal("#L_BSRefLetter","GLOBAL",1) ActionOverride("Jaheira",StartDialogueNoSet(Player1))~ EXIT
 				IF ~~ THEN REPLY @2006 /* ~You... you knew, didn't you? You knew about this and would not speak! You... you betrayer!~ */ DO ~SetGlobal("X#GorionTalkingLetter","GLOBAL",4) ActionOverride(Player1,SetGlobal("#L_BSRefKnows","LOCALS",1)) ActionOverride(Player2,SetGlobal("#L_BSRefKnows","LOCALS",1)) ActionOverride(Player3,SetGlobal("#L_BSRefKnows","LOCALS",1)) ActionOverride(Player4,SetGlobal("#L_BSRefKnows","LOCALS",1)) ActionOverride(Player5,SetGlobal("#L_BSRefKnows","LOCALS",1)) ActionOverride(Player6,SetGlobal("#L_BSRefKnows","LOCALS",1)) SetGlobal("X#JaFriendTalk","GLOBAL",6) SetGlobal("#L_BSRefLetter","GLOBAL",2) ActionOverride("Jaheira",StartDialogueNoSet(Player1))~ EXIT 
 			END ~~~~~

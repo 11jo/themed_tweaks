@@ -5,9 +5,7 @@
 
 IF
 	Global("#L_Dream1","GLOBAL",0)
-	OR(2)
-		Alignment(Player1,MASK_GOOD)
-		Alignment(Player1,MASK_GENEUTRAL)
+	!Alignment(Player1,MASK_EVIL)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)
@@ -47,9 +45,7 @@ END
 
 IF
 	!Global("#L_Dream1","GLOBAL",0)
-	OR(2)
-		Alignment(Player1,MASK_GOOD)
-		Alignment(Player1,MASK_GENEUTRAL)
+	!Alignment(Player1,MASK_EVIL)
 THEN
 	RESPONSE #100
 		CutSceneId(Player1)

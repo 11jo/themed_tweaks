@@ -4,11 +4,11 @@
 
 IF
 	Contains("TITOME02","Container4")
-	Global("TICBOOK02_Spawn","MYAEA",1)
-	Global("#L_GRxRETome2","MYAEA",0)
+	Global("TICBOOK02_Spawn","MYAREA",1)
+	Global("#L_GRxRETome2","MYAREA",0)
 THEN
 	RESPONSE #100
-		SetGlobal("#L_GRxRETome2","MYAEA",1)
+		SetGlobal("#L_GRxRETome2","MYAREA",1)
 		ActionOverride("Container4",DestroyItem("TITOME02")) // Moved to Bently
 		Continue()
 END
