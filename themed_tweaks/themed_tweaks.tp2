@@ -179,3 +179,80 @@ BEGIN @200
 	REQUIRE_PREDICATE !(MOD_IS_INSTALLED ~transitions/transitions.tp2~ (ID_OF_LABEL ~transitions/transitions.tp2~ "#L-TRANSITIONS-RESTORE_POWER")) @7
 	INCLUDE ~themed_tweaks/components/bg2_restore_power.tpa~
 	LAF bg2_restore_power END
+
+/////////////////////////////////////////////////////////
+// GIVE GOOD-ALIGNED REASONS TO GO INTO PEOPLES' HOMES //
+/////////////////////////////////////////////////////////
+BEGIN @10
+	DESIGNATED 10
+	LABEL "#L-TRANSITIONS-BG1_GOOD_REASONS"
+	REQUIRE_PREDICATE (GAME_IS ~bgee eet~) @5
+	REQUIRE_PREDICATE !(MOD_IS_INSTALLED ~transitions/transitions.tp2~ (ID_OF_LABEL ~transitions/transitions.tp2~ "#L-TRANSITIONS-BG1_GOOD_REASONS")) @7
+	INCLUDE ~themed_tweaks/components/good_reasons.tpa~
+	LAF good_reasons END
+
+/////////////////////////////////////////////////////////////////////
+// ALLOW RASAAD'S COMPANION QUEST TO BE COMPLETED BEFORE CHAPTER 5 //
+/////////////////////////////////////////////////////////////////////
+BEGIN @27
+	DESIGNATED 27
+	LABEL "#L-TRANSITIONS-BG1_RASAAD"
+	REQUIRE_PREDICATE (GAME_IS ~bgee eet~) @5
+	REQUIRE_PREDICATE !(MOD_IS_INSTALLED ~transitions/transitions.tp2~ (ID_OF_LABEL ~transitions/transitions.tp2~ "#L-TRANSITIONS-BG1_RASAAD")) @7
+	INCLUDE ~themed_tweaks/components/bg1_rasaad.tpa~
+	LAF bg1_rasaad END
+
+///////////////////////////////////
+// ALLOW DORN TO JOIN GOOD GROUP //
+///////////////////////////////////
+BEGIN @40
+	DESIGNATED 40
+	LABEL "#L-TRANSITIONS-BG1_DORN"
+	REQUIRE_PREDICATE (GAME_IS ~bgee eet~) @5
+	REQUIRE_PREDICATE !(MOD_IS_INSTALLED ~transitions/transitions.tp2~ (ID_OF_LABEL ~transitions/transitions.tp2~ "#L-TRANSITIONS-BG1_DORN")) @7
+	INCLUDE ~themed_tweaks/components/bg1_dorn.tpa~
+	LAF bg1_dorn END
+
+/////////////////////////////////////////////
+// FIX CUT SCENES THAT REARRANGE THE GROUP //
+/////////////////////////////////////////////
+BEGIN @20
+	DESIGNATED 20
+	LABEL "#L-TRANSITIONS-BG1_CUT_SCENES"
+	REQUIRE_PREDICATE (GAME_IS ~bgee eet~) @5
+	REQUIRE_PREDICATE !(MOD_IS_INSTALLED ~transitions/transitions.tp2~ (ID_OF_LABEL ~transitions/transitions.tp2~ "#L-TRANSITIONS-BG1_CUT_SCENES")) @7
+	INCLUDE ~themed_tweaks/components/cut_scenes.tpa~
+	LAF cut_scenes END
+
+////////////////////////////////////////
+// MAKE SURE UNIQUE ITEMS STAY UNIQUE //
+////////////////////////////////////////
+BEGIN @25
+	DESIGNATED 25
+	LABEL "#L-TRANSITIONS-BG1_unique_items"
+	REQUIRE_PREDICATE (GAME_IS ~bgee eet~) @5
+	REQUIRE_PREDICATE !(MOD_IS_INSTALLED ~transitions/transitions.tp2~ (ID_OF_LABEL ~transitions/transitions.tp2~ "#L-TRANSITIONS-BG1_unique_items")) @7
+	INCLUDE ~themed_tweaks/components/unique_items.tpa~
+	LAF unique_items END
+
+///////////////////////////////////////////
+// ADD CAELAR RECRUITMENT ATTEMPTS OF PC //
+///////////////////////////////////////////
+BEGIN @30
+	DESIGNATED 30
+	LABEL "#L-TRANSITIONS-BG1_CAELAR"
+	REQUIRE_PREDICATE (GAME_IS ~bgee eet~) @5
+	REQUIRE_PREDICATE !(MOD_IS_INSTALLED ~transitions/transitions.tp2~ (ID_OF_LABEL ~transitions/transitions.tp2~ "#L-TRANSITIONS-BG1_CAELAR")) @7
+	INCLUDE ~themed_tweaks/components/bg1_caelar.tpa~
+	LAF bg1_caelar END
+
+////////////////////////////////////////////////////
+// REMOVE ERRANT REFERENCES TO PC BEING BHAALSPAWN//
+////////////////////////////////////////////////////
+BEGIN @50
+	DESIGNATED 50
+	LABEL "#L-TRANSITIONS-BG1_BHAALSPAWN_REF"
+	REQUIRE_PREDICATE (GAME_IS ~bgee eet~) @5
+	REQUIRE_PREDICATE !(MOD_IS_INSTALLED ~transitions/transitions.tp2~ (ID_OF_LABEL ~transitions/transitions.tp2~ "#L-TRANSITIONS-BG1_BHAALSPAWN_REF")) @7
+	INCLUDE ~themed_tweaks/components/bhaalspawn_ref.tpa~
+	LAF bhaalspawn_ref END
