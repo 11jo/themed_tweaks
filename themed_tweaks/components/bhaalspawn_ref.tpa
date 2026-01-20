@@ -1,7 +1,54 @@
 //////////////////////////////////////////////////////////////
 // Weeds out errant references to the PC being a bhaalspawn //
 //////////////////////////////////////////////////////////////
+/*
+  COPY - ~weidu.conf~ ~.../weidu.conf~
+    READ_2DA_ENTRY 0 2 3 "weidu_conf_language"
 
+	PRINT ~Game in %weidu_conf_language%...
+~
+
+ACTION_IF "%weidu_conf_language%" STRING_EQUAL "en_US" BEGIN
+	OUTER_SPRINT ~bhaalspawn_ref_language~ ~english~
+END ELSE ACTION_IF "%weidu_conf_language%" STRING_EQUAL "fr_fr" BEGIN
+	OUTER_SPRINT ~bhaalspawn_ref_language~ ~french~
+END ELSE ACTION_IF "%weidu_conf_language%" STRING_EQUAL "de_DE" BEGIN
+	OUTER_SPRINT ~bhaalspawn_ref_language~ ~german~
+END ELSE ACTION_IF "%weidu_conf_language%" STRING_EQUAL "it_IT" BEGIN
+	OUTER_SPRINT ~bhaalspawn_ref_language~ ~italian~
+END ELSE ACTION_IF "%weidu_conf_language%" STRING_EQUAL "pl_PL" BEGIN
+	OUTER_SPRINT ~bhaalspawn_ref_language~ ~polish~
+END ELSE ACTION_IF "%weidu_conf_language%" STRING_EQUAL "ru_RU" BEGIN
+	OUTER_SPRINT ~bhaalspawn_ref_language~ ~russian~
+END ELSE ACTION_IF "%weidu_conf_language%" STRING_EQUAL "es_ES" BEGIN
+	OUTER_SPRINT ~bhaalspawn_ref_language~ ~spanish~
+END
+*/
+
+/*
+/* fetch language in which the tweak pack is installed in - thanks to argent77 */
+// Language folder names listed in the order of LANGUAGE definitions in the SoD Tweak mod.
+ACTION_DEFINE_ARRAY languages BEGIN
+  "english" "german" "russian" "french" "polish" "spanish" "italian"
+END
+
+// Fetching language index from the WeiDU.log
+OUTER_SET language_number = "-1"
+COPY "WeiDU.log" "WeiDU.log"
+  REPLACE_EVALUATE CASE_INSENSITIVE
+    "^~.*BG1NPC\.tp2~ #\([0-9]+\) #5\b"
+    BEGIN
+      PATCH_IF (IS_AN_INT "MATCH1") BEGIN
+        SET language_number = MATCH1
+      END
+    END
+    "%MATCH0%"
+BUT_ONLY IF_EXISTS
+
+ACTION_IF (language_number >= 0) BEGIN
+  OUTER_SPRINT mod_language $languages("%bhaalspawn_ref_language%")
+END
+*/
 DEFINE_ACTION_FUNCTION bhaalspawn_ref BEGIN
 	// There are two times when group members as a whole may become aware of the PC heritage
 	// 1-when the note from Gorion is found (BG1NPC reads it aloud for all to hear)
@@ -90,16 +137,16 @@ DEFINE_ACTION_FUNCTION bhaalspawn_ref BEGIN
 		OUTER_SET STATE_JAH_LETTER2 = ~-1~
 		ACTION_IF (MOD_IS_INSTALLED ~bg1npc.tp2~ 0) BEGIN
 			// Load variables with BG1NPC dialogue states that need to be modified
-			OUTER_SET STATE_AJA_FLIP_1 = STATE_WHICH_SAYS 145 IN ~bg1npc\tra\english\x#ajint.tra~ FROM ~%AJANTIS_JOINED%~
-			OUTER_SET STATE_AJA_FLIP_2 = STATE_WHICH_SAYS 146 IN ~bg1npc\tra\english\x#ajint.tra~ FROM ~%AJANTIS_JOINED%~
-			OUTER_SET STATE_DYN_BXAN = STATE_WHICH_SAYS 1121 IN ~bg1npc\tra\english\x#xanlt.tra~ FROM ~%DYNAHEIR_BANTER%~
-			OUTER_SET STATE_DYN_BXZAR = STATE_WHICH_SAYS 320 IN ~bg1npc\tra\english\x#dynah.tra~ FROM ~%DYNAHEIR_BANTER%~
-			OUTER_SET STATE_JAH_BHAAL = STATE_WHICH_SAYS 21 IN ~bg1npc\tra\english\x#jaheira.tra~ FROM ~%JAHEIRA_JOINED%~
-			OUTER_SET STATE_JAH_LETTER1 = STATE_WHICH_SAYS 25 IN ~bg1npc\tra\english\x#jaheira.tra~ FROM ~%JAHEIRA_JOINED%~
-			OUTER_SET STATE_JAH_LETTER2 = STATE_WHICH_SAYS 41 IN ~bg1npc\tra\english\x#jaheira.tra~ FROM ~%JAHEIRA_JOINED%~
+			OUTER_SET STATE_AJA_FLIP_1 = STATE_WHICH_SAYS 145 IN ~bg1npc\tra\%s\x#ajint.tra~ FROM ~%AJANTIS_JOINED%~
+			OUTER_SET STATE_AJA_FLIP_2 = STATE_WHICH_SAYS 146 IN ~bg1npc\tra\%s\x#ajint.tra~ FROM ~%AJANTIS_JOINED%~
+			OUTER_SET STATE_DYN_BXAN = STATE_WHICH_SAYS 1121 IN ~bg1npc\tra\%s\x#xanlt.tra~ FROM ~%DYNAHEIR_BANTER%~
+			OUTER_SET STATE_DYN_BXZAR = STATE_WHICH_SAYS 320 IN ~bg1npc\tra\%s\x#dynah.tra~ FROM ~%DYNAHEIR_BANTER%~
+			OUTER_SET STATE_JAH_BHAAL = STATE_WHICH_SAYS 21 IN ~bg1npc\tra\%s\x#jaheira.tra~ FROM ~%JAHEIRA_JOINED%~
+			OUTER_SET STATE_JAH_LETTER1 = STATE_WHICH_SAYS 25 IN ~bg1npc\tra\%s\x#jaheira.tra~ FROM ~%JAHEIRA_JOINED%~
+			OUTER_SET STATE_JAH_LETTER2 = STATE_WHICH_SAYS 41 IN ~bg1npc\tra\%s\x#jaheira.tra~ FROM ~%JAHEIRA_JOINED%~
 		END
 		ACTION_IF (STATE_AJA_FLIP_1 = ~-1~) BEGIN
-			OUTER_SET STATE_AJA_FLIP_1 = STATE_WHICH_SAYS 145 IN ~ajantisbg1\Translations\English\AJANTISBHAALLTS_RA1.TRA~ FROM ~%AJANTIS_JOINED%~
+			OUTER_SET STATE_AJA_FLIP_1 = STATE_WHICH_SAYS 145 IN ~ajantisbg1\Translations\%s\AJANTISBHAALLTS_RA1.TRA~ FROM ~%AJANTIS_JOINED%~
 			OUTER_SET STATE_AJA_FLIP_2 = %STATE_AJA_FLIP_1%
 		END
 		
