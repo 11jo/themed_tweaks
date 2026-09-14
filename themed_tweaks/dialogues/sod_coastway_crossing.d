@@ -350,7 +350,7 @@ APPEND BDCORWIN
 		= @2155 /* ~Follow me back to camp. I need to inform Bence of our need to head for Boareskyr Bridge as soon as possible.~ */
 		IF ~~ THEN DO ~SetInterrupt(FALSE) ApplySpellRES("BDHaste","CORWIN") EscapeAreaObjectMove("BD1000","FF_Camp",570,3520,W) ApplySpellRES("#LUnHast","CORWIN") SetInterrupt(TRUE)~ EXIT
 	END
-	
+
 	IF WEIGHT #-87 ~Global("BD_PLOT","GLOBAL",170) Global("#L_CWBridgeWrap","MYAREA",2)~ THEN BEGIN CORPORAL_MOVE
 		SAY #%CORWIN_BRIDGEFORT% /* ~We need to get to Bridgefort. Corporal, spread the word to the troops to strike camp. Make sure to mark our new path on everyone's maps. We move out as soon as our friend is ready.~ [BD35933] */
 		IF ~~ THEN DO ~SetGlobal("BD_PLOT","GLOBAL",175)~ EXTERN ~BDBENCE~ 14
@@ -437,6 +437,11 @@ APPEND BDCORWIJ
 	IF ~~ THEN BEGIN CORWIN_BRIDGE_QUEST_REST_OF_YOU
 		SAY @2108 /* ~I'll be just a little ways behind you, <CHARNAME>. The rest of you, watch for my signal.  Let's head out!~ */
 		IF ~~ THEN DO ~StartCutSceneMode() StartCutSceneEx("#LCWBQ03",TRUE)~ EXIT
+	END
+
+	IF WEIGHT #-95 ~Global("BD_PLOT","GLOBAL",170) Global("#L_CWBridgeWrap","MYAREA",2)~ THEN BEGIN CORPORAL_MOVE
+		SAY #%CORWIN_BRIDGEFORT% /* ~We need to get to Bridgefort. Corporal, spread the word to the troops to strike camp. Make sure to mark our new path on everyone's maps. We move out as soon as our friend is ready.~ [BD35933] */
+		IF ~~ THEN DO ~SetGlobal("BD_PLOT","GLOBAL",175)~ EXTERN ~BDBENCE~ 14
 	END
 END
 
